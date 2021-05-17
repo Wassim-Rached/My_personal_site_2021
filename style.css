@@ -9,7 +9,83 @@
   --primairy-color: rgb(16, 129, 73);
   --secondary-color: rgb(72, 25, 158);
 }
+/*START ANIMATION */
+.lds-ring {
+  z-index: 1000000;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border: 8px solid #fff;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #4a7724 transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/*END ANIMATION */
 /* START GLOBAL RULES */
+body {
+  overflow-x: hidden;
+  min-height: 100vh;
+  background-color: #4a7724;
+}
+/* body::after {
+  content: "";
+  z-index: 10000;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgb(172, 95, 95);
+  opacity: 0.15;
+} */
+.backgroundHome {
+  z-index: -1;
+  top: 0;
+  left: 0;
+  position: absolute;
+  min-width: 100%;
+  max-height: 100vh;
+}
+.smoth {
+  z-index: -1;
+  position: absolute;
+  top: calc(100vh - 250px);
+  width: 100%;
+  height: 300px;
+  background: linear-gradient(0deg, #4a7724 33%, transparent 66%);
+}
 nav,
 section,
 .home {
@@ -24,7 +100,11 @@ section,
   color: var(--primairy-color) !important;
 }
 header.sticky {
+  background-color: var(--primairy-color);
   position: fixed;
+}
+header.sticky nav .ULpc li a {
+  color: #fff;
 }
 header.sticky nav {
   padding: 13px;
@@ -34,14 +114,13 @@ html {
   position: relative;
   scroll-behavior: smooth;
 }
-body {
-  overflow-x: hidden;
-  min-height: 100vh;
-}
 header {
-  background-color: var(--primairy-color);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  transition: 0.5s;
   width: 100%;
-  box-shadow: -1px 0px 20px 10px var(--primairy-color);
 }
 header nav {
   transition: 0.3s;
@@ -60,7 +139,14 @@ header nav {
   overflow: hidden;
 }
 .humberger {
+  width: 25px;
+  height: 25px;
+  background-size: cover;
+  background-image: url(/images/icon-hamburger.svg);
   display: none;
+}
+.close {
+  background-image: url(images/icon-close.svg);
 }
 .ULphone {
   z-index: 100;
@@ -69,7 +155,7 @@ header nav {
   color: #fff;
   display: flex;
   position: fixed;
-  top: 60px;
+  top: 54.18px;
   min-height: 300px;
   list-style: none;
   left: 0px;
@@ -95,11 +181,22 @@ header nav .ULpc li {
   margin-left: 20px;
 }
 header nav .ULpc li a {
+  font-weight: 550;
   padding: 8px;
   text-decoration: none;
-  color: #fff;
+  color: var(--primairy-color);
 }
 @media (max-width: 700px) {
+  header {
+    background-color: var(--primairy-color);
+    position: fixed;
+  }
+  header nav {
+    padding: 13px;
+  }
+  header nav .ULpc li a {
+    color: #fff;
+  }
   .humberger {
     cursor: pointer;
     display: block;
@@ -110,13 +207,14 @@ header nav .ULpc li a {
 }
 /* START MENU */
 .menu {
+  z-index: 1000;
   cursor: not-allowed;
   padding: 22px;
   transition: 0.4s;
   background-color: rgb(28, 33, 107);
   text-transform: capitalize;
   position: fixed;
-  top: 60px;
+  top: 0;
   bottom: 0;
   left: -345px;
   width: 345px;
@@ -164,18 +262,41 @@ header nav .ULpc li a {
 .home {
   min-height: 100vh;
   display: flex;
-  flex-wrap: wrap;
-  row-gap: 20px;
+  align-items: center;
+  justify-content: center;
 }
-.home .title {
-  max-height: 200px;
-  padding: 100px;
+.home .container {
+  padding: 15px;
+  background-color: rgba(0, 0, 0, 0.3);
+  min-height: 40vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+.home .container .title {
+  color: #725c42;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  width: 100%;
+  max-width: 900px;
+  font-size: 30px;
 }
-.home p {
+.home .container p {
+  max-width: 80%;
+  color: #fff;
   text-align: center;
   padding: 15px;
+}
+.home .container .signBtn {
+  padding: 12px 30px;
+  border: 1px solid white;
+  color: rgb(255, 255, 255);
+}
+.home .container .signBtn a {
+  color: var(--secondary-color);
+  text-decoration: none;
 }
 /* END HOME */
 /* START SECTION */

@@ -13,16 +13,18 @@
     <title>My Personal Site</title>
   </head>
   <body>
+    <div id="lds-ring" class="lds-ring">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <img class="backgroundHome" src="images/greenTree.jpg" alt="" />
+    <div class="smoth"></div>
     <header id="header">
       <nav id="nav">
         <div class="logo">LOGO</div>
-        <img
-          onclick="showNavPhone()"
-          class="humberger"
-          id="humberger"
-          src="images/icon-hamburger.svg"
-          alt=""
-        />
+        <div onclick="showNavPhone()" class="humberger" id="humberger"></div>
         <ul class="ULphone" id="ULphone">
           <li onclick="showNavPhone()"><a href="#home">Home</a></li>
           <li onclick="showNavPhone()"><a href="#section1">Contact us</a></li>
@@ -57,13 +59,16 @@
       </ul>
     </div>
     <div class="home" id="home">
-      <h1 class="title">Welcome to my Personal website</h1>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis modi
-        itaque reiciendis nesciunt saepe sapiente, deleniti magnam eius
-        voluptatum, rerum corrupti, velit fuga ratione consectetur natus aperiam
-        odit accusamus beatae.
-      </p>
+      <div class="container">
+        <h1 class="title">Welcome to my Personal website</h1>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis modi
+          itaque reiciendis nesciunt saepe sapiente, deleniti magnam eius
+          voluptatum, rerum corrupti, velit fuga ratione consectetur natus
+          aperiam odit accusamus beatae.
+        </p>
+        <div class="signBtn"><a href="signIn.html">sign in</a></div>
+      </div>
     </div>
     <section id="section1">
       <h1 class="title">contact us</h1>
